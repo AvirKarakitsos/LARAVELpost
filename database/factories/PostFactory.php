@@ -18,7 +18,7 @@ class PostFactory extends Factory
             'content' => $this->faker->sentences(rand(2,4),true),
             'image' => 'https://via.placeholder.com/150',
             'url' => $this->faker->sentence(1,true),
-            'category_id'=>rand(1,10)
+            'category_id'=>rand(1,8)
         ];
     }
 }
