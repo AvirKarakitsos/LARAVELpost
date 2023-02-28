@@ -40,7 +40,13 @@
         <select id="category" name="category_id" class="mb-5">
             <option value=""></option>
             @foreach ($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
+                <option value="{{$category->id}}">
+                    @if(preg_match("/\/en/", Request::fullUrl()))
+                    {{$category->name_en}}      
+                    @else
+                    {{$category->name_fr}}
+                    @endif
+                </option>
             @endforeach
         </select>
     
