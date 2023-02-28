@@ -1,0 +1,53 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Créer un post') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200 text-center">
+                    <ul class="list-none text-red-600">
+                        @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data" class="w-96 mx-auto my-5 p-3 border">
+        @csrf
+    
+        <x-label for="title" value="Titre" class="text-base font-bold"/>
+        <x-input type="text" name="title" id="title" autocomplete="off" class="mb-5"/>
+    
+        <x-label for="content" value="Content" class="text-base font-bold"/>
+        <span id="cpt"></span>
+        <textarea  name="content" id="content" maxlength="105" class="w-full h-32"></textarea>
+    
+        <x-label for="image" value="Image" class="text-base font-bold"/>
+        <x-input type="file" name="image" id="image" class="mb-5"/>
+    
+        <x-label for="url" value="Url" class="text-base font-bold"/>
+        <x-input type="text" name="url" id="url" autocomplete="off" class="mb-5"/>
+    
+        <x-label for="category" value="Catégories" class="text-base font-bold"/>
+        <select id="category" name="category_id" class="mb-5">
+            <option value=""></option>
+            @foreach ($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+    
+        <div class="flex justify-around">
+            <button class="w-1/2 p-1 font-bold hover:bg-green-300" type="submit">OK</button>
+            <button class="w-1/2 p-1 font-bold hover:bg-gray-300"><a href="{{route('dashboard')}}">Retour</a></button>
+        </div>
+    </form>
+
+</x-app-layout>
