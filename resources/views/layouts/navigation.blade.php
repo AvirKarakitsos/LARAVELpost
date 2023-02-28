@@ -130,7 +130,41 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    {{-- <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        @if (preg_match("([0-9]+)", Request::path(), $matches))
+            @foreach(config('app.available_locales') as $locale)
+                <x-nav-link :href="route(Route::currentRouteName(), ['locale' => $locale,'post' => $matches[0]])" :active="app()->getLocale() == $locale">
+                    {{ strtoupper($locale) }}
+                </x-nav-link>
+            @endforeach     
+        @else
+            @foreach(config('app.available_locales') as $locale)
+                <x-nav-link :href="route(Route::currentRouteName(), ['locale' => $locale])" :active="app()->getLocale() == $locale">
+                    {{ strtoupper($locale) }}
+                </x-nav-link>
+            @endforeach
+        @endif
+        @guest
+        <div class="pt-2 pb-2 space-y-1">
+            <x-responsive-nav-link :href="route('login')">
+                {{ __('translate.navbar.login') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-2 space-y-1">
+            <x-responsive-nav-link :href="route('register')">
+                {{ __('translate.navbar.register') }}
+            </x-responsive-nav-link>
+        </div>
+        @endguest
+        @auth
+            @if (Auth::user()->is_admin)
+                <div class="pt-2 pb-2 space-y-1">
+                    <x-responsive-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.index ')"> 
+                        Admin
+                    </x-responsive-nav-link>
+                </div>
+            @endif
+        @endauth
         <div class="pt-2 pb-2 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('translate.navbar.dashboard') }}
@@ -167,5 +201,5 @@
             </div>
         </div>
         @endauth
-    </div> --}}
+    </div>
 </nav>
