@@ -5,3 +5,5 @@ Système d'authentification. Menu disposnible en français et en anglais (middle
 Filtre par catégorie. Mode administrateur (middleware).
 
 Utilisation de Tailwind css.
+
+![Image](https://github.com/AvirKarakitsos/LARAVELpost/blob/main/public/images/screenshot.png?raw=true)
