@@ -18,21 +18,24 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-           
+
+            <header>
                 @include('layouts.navigation')
+            </header>
             
             <!-- Page Heading -->
-            <header class="bg-white shadow">
+            <div class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+                    {{ $aside }}
                 </div>
-            </header>
+            </div>
 
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
+
         </div>
+        <script src="{{asset('js/script.js')}}"></script>
     </body>
-    <script src="{{asset('js/script.js')}}"></script>
 </html>
