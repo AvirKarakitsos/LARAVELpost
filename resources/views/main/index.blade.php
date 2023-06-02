@@ -18,13 +18,14 @@
     </x-slot>
 
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center p-6 gap-5">
+
         @foreach ($posts as $post)
-        <section class="max-w-full w-400 h-52 border border-black {{'post_'.$post->category->id}}">
+        <article class="max-w-full w-400 h-52 border border-black {{'post_'.$post->category->id}}">
 
             <div class="h-3/4 flex">           
                 <img class="w-2/5 object-cover" src="{{asset('storage/'.$post->image)}}" alt="oups!!"/>
                 <div class="w-3/5 px-2 text-justify">
-                    <p align="center"><span class="font-bold">{{ $post->title }}</span></p>
+                    <h2 class="text-center">{{ $post->title }}</span></h2>
                     <p>{{Str::limit($post->content,105,'')}}</p>
                     <a class="text-blue-700 underline hover:text-blue-900" href="{{$post->url}}" target="_blank">lien</a>
                 </div>
@@ -40,7 +41,9 @@
                     @endif
                 </div>
             </div>
-        </section>
+
+        </article>
         @endforeach
+
     </section>
 </x-app-layout>

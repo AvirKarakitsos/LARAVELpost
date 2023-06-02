@@ -22,14 +22,14 @@
     
     <section>
         @foreach ($posts as $post)
-        <section class="w-96 h-52 mx-auto border border-black">
+        <article class="w-96 h-52 mx-auto border border-black">
 
             <div class="h-3/4 flex">           
                 <div class="w-2/5 text-center">
                     <img class="object-cover" src="{{asset('storage/'.$post->image)}}" alt="oups!!"/>
                 </div>
                 <div class="w-3/5 px-2 text-justify">
-                    <p align="center"><span class="font-bold">{{ $post->title }}</span></p>
+                    <h2 class="text-center">{{ $post->title }}</h2>
                     <p>{{$post->content}}</p>
                     <a class="text-blue-700 underline hover:text-blue-900" href="{{$post->url}}" target="_blank">lien</a>
                 </div>
@@ -45,9 +45,10 @@
                     @endif
                 </div>
             </div>
-        </section>
 
-        <section class="w-96 h-8 mx-auto mb-10 flex justify-around items-center text-center font-bold">
+        </article>
+
+        <div class="w-96 h-8 mx-auto mb-10 flex justify-around items-center text-center font-bold">
 
             <a class="w-1/2 h-full pt-1 hover:bg-green-300" href="{{route('admin.posts.edit',$post)}}">editer</a>
             
@@ -63,7 +64,7 @@
                     </form>
             </a>
 
-        </section>
+        </div>
         @endforeach
     </section>
 </x-app-layout>
