@@ -22,11 +22,18 @@
         @foreach ($posts as $post)
         <article class="max-w-full w-400 h-52 border border-black {{'post_'.$post->category->id}}">
 
-            <div class="h-3/4 flex">           
-                <img class="w-2/5 object-cover" src="{{asset('storage/'.$post->image)}}" alt="oups!!"/>
-                <div class="w-3/5 px-2 text-justify">
-                    <h2 class="text-center">{{ $post->title }}</span></h2>
-                    <p>{{Str::limit($post->content,105,'')}}</p>
+            <div class="h-3/4 flex">
+                @if(preg_match("/http/",$post->image))
+                <img class="w-2/5 object-cover" src="{{$post->image}}" alt="{{$post->title}}"/>
+                    @else
+                    <img class="w-2/5 object-cover" src="{{asset('storage/'.$post->image)}}" alt="{{$post->title}}"/>
+                    @endif         
+                {{-- <img class="w-2/5 object-cover" src="{{asset('storage/'.$post->image)}}" alt="{{$post->title}}"/> --}}
+                <div class="w-3/5 px-2 flex flex-col justify-between">
+                    <div class="py-1 flex flex-col gap-y-1.5">
+                        <h2 class="text-center font-bold">{{ $post->title }}</span></h2>
+                        <p class="text-sm">{{Str::limit($post->content,130,'')}}</p>
+                    </div>
                     <a class="text-blue-700 underline hover:text-blue-900" href="{{$post->url}}" target="_blank">lien</a>
                 </div>
             </div>

@@ -23,11 +23,11 @@ function toggle(id){
 let compteur = document.getElementById('content')
 let cpt = document.getElementById('cpt')
 
-cpt.innerHTML=compteur.value.length+'/105'
+cpt.innerHTML=compteur.value.length+'/130'
 
 compteur.addEventListener('keyup',function(){
-    cpt.innerHTML=this.value.length+'/105'
-    if(this.value.length <= 105){
+    cpt.innerHTML=this.value.length+'/130'
+    if(this.value.length <= 130){
         cpt.style.color='black'
     }else{
         cpt.style.color='red'

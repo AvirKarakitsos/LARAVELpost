@@ -33,7 +33,7 @@
     
         <x-label for="content" value="Content" class="text-base font-bold"/>
         <span id="cpt"></span>
-        <textarea  name="content" id="content" maxlength="105" class="w-full h-32">{{$post->content}}</textarea>
+        <textarea  name="content" id="content" maxlength="130" class="w-full h-32">{{$post->content}}</textarea>
     
         <x-label for="image" value="Image" class="text-base font-bold"/>
         <x-input type="file" name="image" id="image" class="mb-5"/>

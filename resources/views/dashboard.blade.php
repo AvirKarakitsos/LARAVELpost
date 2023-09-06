@@ -25,12 +25,12 @@
         <article class="w-96 h-52 mx-auto border border-black">
 
             <div class="h-3/4 flex">           
-                <div class="w-2/5 text-center">
-                    <img class="object-cover" src="{{asset('storage/'.$post->image)}}" alt="oups!!"/>
-                </div>
-                <div class="w-3/5 px-2 text-justify">
-                    <h2 class="text-center">{{ $post->title }}</h2>
-                    <p>{{$post->content}}</p>
+                <img class="w-2/5 object-cover" src="{{asset('storage/'.$post->image)}}" alt="{{$post->title}}"/>
+                <div class="w-3/5 px-2 flex flex-col justify-between">
+                    <div class="py-1 flex flex-col gap-y-1.5">
+                        <h2 class="text-center font-bold">{{ $post->title }}</span></h2>
+                        <p class="text-sm">{{Str::limit($post->content,130,'')}}</p>
+                    </div>
                     <a class="text-blue-700 underline hover:text-blue-900" href="{{$post->url}}" target="_blank">lien</a>
                 </div>
             </div>
